@@ -1,6 +1,6 @@
 'use strict';
 
-const Characters = [
+const characters = [
   {
     "name":"Aries of First",
     "title":"Military Strategist",
@@ -147,4 +147,31 @@ const Characters = [
   },*/
 ]
 
-module
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    /*Add altering commands here. Return a promise to correctly handle asynchronicity.
+
+      Example:
+      return queryInterface.bulkInsert('People', [{
+        name: 'John Doe',
+        isBetaMember: false
+      }], {});
+    */
+    let charTable = characters.map(function(s) {
+      s.createdAt = new Date(),
+      s.updatedAt = new Date()
+      return s
+    })
+
+    return queryInterface.bulkInsert('characters', charTable,{})
+  },
+
+  down: (queryInterface, Sequelize) => {
+    /*
+      Add reverting commands here.
+      Return a promise to correctly handle asynchronicity.
+    */
+    return queryInterface.bulkDelete('characters', null, {});
+
+  }
+};
