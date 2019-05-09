@@ -56,6 +56,9 @@ module.exports = {
       family: {
         type: Sequelize.STRING
       },
+      imageFilename: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     training: DataTypes.STRING,
     career: DataTypes.STRING,
     accomplishments: DataTypes.STRING,
-    family: DataTypes.STRING
+    family: DataTypes.STRING,
+    imageFilename: DataTypes.STRING
   }, {});
   Characters.associate = function(models) {
     // associations can be defined here
