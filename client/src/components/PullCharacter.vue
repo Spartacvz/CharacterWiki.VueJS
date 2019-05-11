@@ -36,11 +36,6 @@
             {{ character.introduction }}
         </p>
         </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
 
         <a name="Early Years/Childhood"></a>
         <div class="pHeader">
@@ -49,11 +44,6 @@
         <p>
             {{ character.childhood }}
         </p>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
         </br>
 
         <a name="Education"></a>
@@ -64,11 +54,6 @@
             {{ character.training }}
         </p>
         </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
 
         <a name="Career"></a>
         <div class="pHeader">
@@ -77,11 +62,6 @@
         <p>
             {{ character.career }}
         </p>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
         </br>
 
         <a name="Accomplishments"></a>
@@ -92,11 +72,6 @@
             {{ character.accomplishments }}
         </p>
         </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
 
         <a name="Family"></a>
         <div class="pHeader">
@@ -106,23 +81,18 @@
             {{ character.family }}
         </p>
         </br>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
 
         <div class="imageHolder">
-            <img class="quikView" src="{{Leo.jpg}}" width="300" height="400">
+            <img class="quikView" src="{{character.fileName}}" width="300" height="400">
         </div>
         <div class="names">
             <p class="quikView">
-                <strong>Name/Title:</strong>  Leo "The Juggling Swordsman" Monk/Philosopher
+                <strong>Name/Title:</strong>  {{ character.name }} "{{ character.title }}"
             </p>
         </div>
         <div class="build">
             <p class="quikView">
-                <strong>Height/Weight:</strong>	5'9"/175
+                <strong>Height/Weight:</strong>	{{ character.height }}/{{ character.weight }}
             </p>
         </div>
         <div class="power">
