@@ -8,7 +8,7 @@ router.get('/characters', function (req, res, next) {
         .then( chars => {
             return res.json(chars)
         })
-        .catch( err => next(err) )
+        .catch( err => next(err))
 })
 
 module.exports = router
