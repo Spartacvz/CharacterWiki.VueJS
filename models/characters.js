@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     introduction: DataTypes.STRING,
     childhood: DataTypes.STRING,
     training: DataTypes.STRING,
+    career: DataTypes.STRING,
+    accomplishments: DataTypes.STRING,
+    family: DataTypes.STRING,
     fileName: DataTypes.STRING
   }, {});
   Characters.associate = function(models) {
