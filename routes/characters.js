@@ -1,10 +1,10 @@
 let express = require('express')
-let Character = require('../models').Character
+let Characters = require('../models').Characters
 
 let router = express.Router()
 
 router.get('/characters', function (req, res, next) {
-    Character.findAll({order: ['name']})
+    Characters.findAll({order: ['name']})
         .then( character =>{
             return res.json(character)
         })
