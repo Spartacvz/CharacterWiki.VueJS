@@ -12,10 +12,10 @@ app.use(function (req, res, next) {
     res.status(404).send('Not Found')
 })
 
-app.use((function (err, req, res, next) {
+app.use(function (err, req, res, next) {
     console.error(err.stack)
     res.status(500).send('Server Error')
-}))
+})
 
 // Start server running
 let server = app.listen(process.env.Port || 3000, function () {

@@ -1,37 +1,75 @@
 'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
-
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
-
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = sequelize['import'](path.join(__dirname, file));
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('Characters', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      name: {
+        type: Sequelize.STRING
+      },
+      title: {
+        type: Sequelize.STRING
+      },
+      height: {
+        type: Sequelize.FLOAT
+      },
+      weight: {
+        type: Sequelize.INTEGER
+      },
+      superPower: {
+        type: Sequelize.STRING
+      },
+      skillOne: {
+        type: Sequelize.STRING
+      },
+      skillTwo: {
+        type: Sequelize.STRING
+      },
+      enhancedAbilityOne: {
+        type: Sequelize.STRING
+      },
+      enhancedAbilityTwo: {
+        type: Sequelize.STRING
+      },
+      enhancedAbilityThree: {
+        type: Sequelize.STRING
+      },
+      introduction: {
+        type: Sequelize.STRING
+      },
+      childhood: {
+        type: Sequelize.STRING
+      },
+      training: {
+        type: Sequelize.STRING
+      },
+      career: {
+        type: Sequelize.STRING
+      },
+      accomplishments: {
+        type: Sequelize.STRING
+      },
+      family: {
+        type: Sequelize.STRING
+      },
+      fileName: {
+        type: Sequelize.STRING
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
+  },
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('Characters');
   }
-});
-
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
-module.exports = db;
+};

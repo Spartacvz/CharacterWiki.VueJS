@@ -127,8 +127,8 @@
             character: Object
         },
         data() {
-            show: false,
             return {
+                show: false,
                 name: this.character.name,
                 height: this.height,
                 weight: this.weight,
