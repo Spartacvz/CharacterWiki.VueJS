@@ -1,30 +1,25 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-// Import VueRouter Library, and this app's routes
 import VueRouter from 'vue-router'
-import router from 'client/src/router'
+import router from './router'
 
-import BootstrapVue from "bootstrap-vue"
+import BootstrapVue from 'bootstrap-vue';
 
-import CharacterApiService from 'client/src/services/characterService.js'
+import CharacterAPIService from '@/services/characterService'
 
-Vue.use(VueRouter) //Use VueRouter
+Vue.use(VueRouter)
 
+// Configure Bootstrap
 Vue.use(BootstrapVue)
-import "bootstrap/dist/css/bootstrap-grid.css"
-import "bootstrap-vue/dist/bootstrap-vue.css"
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-// Add API service to Vue protype
-Vue.prototype.$characterService = CharacterApiService
+
+// Add API service to Vue prototype
+Vue.prototype.characterService = CharacterAPIService
 
 new Vue({
   render: h => h(App),
-  router: [
-    {
-      path: 'client/src/components/PullCharacter.vue',
-      name: 'PullCharacter',
-      component: CharacterData
-    }
-  ],
+  router      /* Include routes */
 }).$mount('#app')

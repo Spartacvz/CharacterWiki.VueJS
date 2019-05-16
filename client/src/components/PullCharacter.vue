@@ -66,70 +66,19 @@
             </p>
         </transition>
 
-        <!--Slide panel for CHARACTER IMAGE-->
-        <div class="imageHolder" @click="show = !show">
-            <transition name="slide">
-                <img class="quikView" v-bind:src="character.fileName" v-bind:alt="character.name" width="300" height="400" v-if="show">
-            </transition>
-        </div>
 
-        <!--Slide panel for NAME & TITLE-->
-        <div class="names" @click="show = !show">
-            <transition name="slide">
-                <p class="quikView" v-if="show">
-                    <strong>Name/Title:</strong>  {{ character.name }} "{{ character.title }}"
-                </p>
-            </transition>
-        </div>
-
-        <!--Slide panel for CHARACTER BUILD-->
-        <div class="build" @click="show = !show">
-            <transition name="slide">
-                <p class="quikView" v-if="show">
-                    <strong>Height/Weight:</strong>	{{ character.height }}/{{ character.weight }}
-                </p>
-            </transition>
-        </div>
-
-        <!--Slide panel for SUPERPOWER-->
-        <div class="power" @click="show = !show">
-            <transition name="slide">
-                <p class= "quikView" v-if="show">
-                    <strong>Super Power:</strong> {{ character.superPower }}
-                </p>
-            </transition>
-        </div>
-
-        <!--Slide panel for TALENTS-->
-        <div class="talents" @click="show = !show">
-            <transition name="slide">
-                <p class="quikView" v-if="show">
-                    <strong>Learned Skills:</strong> {{ character.skillOne}}, {{ character.skillTwo}}
-                </p>
-            </transition>
-        </div>
-
-        <!--Slide panel for Abilities-->
-        <div class="abilities" @click="show = !show">
-            <transition name="slide">
-                <p class= "quikView" v-if="show">
-                    <strong>Enhanced Abilities:</strong> {{ enhancedAbilityOne }}, {{ enhancedAbilityTwo }}, {{ enhancedAbilityThree }}
-                </p>
-            </transition>
-        </div>
     </div>
 </template>
 
 <script>
     export default {
         name: "PullCharacter",
-        props: {
+        component: {
             character: Object
         },
         data() {
             return {
-                show: false,
-                name: this.character.name,
+                character: {name: ""},
                 height: this.height,
                 weight: this.weight,
                 superPower: this.superPower,
@@ -145,11 +94,35 @@
                 accomplishments: this.accomplishments,
                 family: this.family,
                 fileName: this.fileName,
+                url:""
             }
             hide: false
         },
         mounted() {
-
+            this.character.name = this.$route.params.character
+            this.fetchCharacterData()
+        },
+        methods: {
+            fetchCharacterData() {
+                this.$characterService.getOne(this.character.name).then(data => {
+                    this.character = data
+                    this.height = data.height
+                    this.weight = data.weight
+                    this.superPower = data.superPower
+                    this.skillOne = data.skillOne
+                    this.skillTwo = data.skillTwo
+                    this.enhancedAbilityOne = data.enhancedAbilityOne
+                    this.enhancedAbilityTwo = data.enhancedAbilityTwo
+                    this.enhancedAbilityThree = data.enhancedAbilityThree
+                    this.introduction = data.introduction
+                    this.childhood = data.childhood
+                    this.training = data.training
+                    this.career = data.career
+                    this.accomplishments = data.accomplishments
+                    this.family = data.family
+                    this.fileName = data.fileName
+                }).catch( err => console.error(err))
+            }
         }
     }
 </script>

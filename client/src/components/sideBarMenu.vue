@@ -29,8 +29,10 @@
     export default {
         name: "sideBarMenu",
         data() {
-            active: false
-        }
+            return{
+                msg: 'Welcome to your Vue App'
+            }
+        },
     }
 </script>
 
@@ -85,6 +87,7 @@
         text-align: center;
         box-sizing: border-box;
         opacity: .85;
+        color: whitesmoke;
     }
 
     .sideBar.active{

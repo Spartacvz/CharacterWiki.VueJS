@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <div class="heading">
-            <div class="title">
-                <h1>{{ character.name }}</h1>
-            </div>
+    <div class="heading">
+        <div class="title">
+            <h1>{{ character.name }}</h1>
         </div>
     </div>
 </template>

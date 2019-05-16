@@ -12,8 +12,14 @@
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.19",
     "core-js": "^2.6.5",
+    "jQuery": "^1.7.4",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.1.0",
+    "location": "0.0.1",
+    "navigator": "^1.0.1",
     "vue": "^2.6.10",
-    "vue-router": "^3.0.6"
+    "vue-router": "^3.0.6",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.7.0",
